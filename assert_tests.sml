@@ -1,4 +1,4 @@
-use "tests.sml";
+use "testing.sml";
 
 
 let
