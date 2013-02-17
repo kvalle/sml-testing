@@ -1,16 +1,7 @@
 use "fizzbuzz.sml";
-use "asserts.sml";
-use "formatters.sml";
-
-fun test x = x
-
-fun tr tests = 
-    case tests of 
-	[] => ()
-      | (description,result)::ts => (print(description ^ result ^ "\n");
-		      tr(ts))
-
-val _ = tr([
+use "tests.sml";
+					
+val _ = run([
     test("fizzbuzz of large prime is number",
 	 assert_equals("10006721", fizzbuzz 10006721, string_formatter)),
     
