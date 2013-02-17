@@ -1,6 +1,15 @@
 use "asserts.sml";
 use "formatters.sml";
 
+signature TESTS =
+sig
+val test : string * string -> string * string
+val run : (string * string) list -> unit
+end
+
+structure SmlTests :> TESTS =
+struct
+
 fun test t = t
 
 fun print_errors tests = 
@@ -23,3 +32,4 @@ fun run tests =
 		  ())
     end
 	
+end
