@@ -20,17 +20,26 @@ in
 	   
 	   test("assert_raises with correct exception passes",
 		assert_equals(TEST_PASSED,
-			      assert_raises(fn () => raise FooExn, FooExn),
+			      assert_raises(fn () => raise FooExn, (), FooExn),
 			      string_formatter)),
 	   
 	   test("assert_raises without exception raised gives error",
 		assert_equals("No FooExn was raised",
-			      assert_raises(fn () => (), FooExn),
+			      assert_raises(fn () => (), (), FooExn),
 			      string_formatter)),
 	   
 	   test("assert_raises with wrong exception gives error",
 		assert_equals("Wrong exception raised: BarExn",
-			      assert_raises(fn () => raise BarExn, FooExn),
+			      assert_raises(fn () => raise BarExn, (), FooExn),
+			      string_formatter)),
+
+	   test("assert_raises calls fn with provided arguments",
+		assert_equals(TEST_PASSED,
+			      assert_raises(fn (a,b,c) => if a=1 andalso b="foo" andalso c
+							  then raise FooExn
+							  else "ok",
+					    (1, "foo", true),
+					    FooExn),
 			      string_formatter))
        ])
 end
