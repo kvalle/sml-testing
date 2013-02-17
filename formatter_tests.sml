@@ -58,3 +58,10 @@ val test_int_list_option_is_list_with_elements =
     assert_equals("SOME [1, 2, 3]", 
 		  int_list_option_formatter (SOME [1, 2, 3]),
 		  string_formatter)
+
+(* bool option *)
+
+val test_bool_option_formatter_for_all_outputs = 
+    assert_equals(["NONE", "SOME true", "SOME false"],
+		  List.map bool_option_formatter [NONE, SOME true, SOME false],
+		  string_list_formatter)
