@@ -2,7 +2,7 @@ use "formatters.sml";
 use "asserts.sml";
 
 val test_assert_equals_is_equal =
-    assert_equals(" -- PASS",
+    assert_equals(TEST_PASSED,
 		  assert_equals("foo", "foo", string_formatter),
 		  string_formatter)
 
@@ -15,7 +15,7 @@ exception FooExn
 exception BarExn
 
 val test_assert_raises_with_correct_exception =
-    assert_equals(" -- PASS",
+    assert_equals(TEST_PASSED,
 		  assert_raises(fn () => raise FooExn, FooExn),
 		  string_formatter)
 
