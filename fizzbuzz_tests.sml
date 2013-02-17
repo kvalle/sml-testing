@@ -15,3 +15,18 @@ test("10 first values of standard fizzbuzz are correct",
 		       string_list_formatter));
 
 run()
+
+(*
+Example output:
+
+  ... 
+  val it = "fizzbuzz of large prime is number" : string
+  val it = "fizzbuzz of 90 is fizzbuzz" : string
+  val it = "10 first values of standard fizzbuzz are correct" : string
+
+  TESTS PASSED
+
+  val it = "3 tests total" : string
+  val it = () : unit
+
+*)
