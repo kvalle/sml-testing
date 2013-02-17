@@ -1,16 +1,20 @@
 use "asserts.sml";
 use "formatters.sml";
 
+
 signature TESTS =
 sig
-    val test : string * string -> string * string
-    val run : (string * string) list -> unit
+    val test : string * string -> unit
+    val run : unit -> unit
 end
     
 structure SmlTests :> TESTS =
 struct
 
-fun test t = t
+val suite : (string * string) list ref = ref [];
+
+fun test (desc, result) = 
+    suite := (desc, result)::(!suite);
 
 fun print_errors tests = 
     case tests of 
@@ -19,9 +23,9 @@ fun print_errors tests =
 	(print("FAILED: " ^ description ^ "\n  -- " ^ result ^ "\n");
 	 print_errors(rest))
 
-fun run tests = 
+fun run () = 
     let 
-	val failed = List.filter (fn (_,result) => result <> TEST_PASSED) tests
+	val failed = List.filter (fn (_,result) => result <> TEST_PASSED) (!suite)
     in
 	case failed of 
 	    [] => (print("\nTESTS PASSED\n\n"); 
