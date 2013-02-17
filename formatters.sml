@@ -1,23 +1,18 @@
 val string_formatter = fn s => s
 val int_formatter = Int.toString
 
-fun string_list_option_formatter some_list =
-    case some_list of
-	NONE => "NONE"
-      | SOME [] => ""
-      | SOME (x::[]) => x
-      | SOME (x::rest) => x ^ ", " ^ string_list_option_formatter(SOME rest)
-										       
-fun int_list_option_formatter some_list =
-    case some_list of
-	NONE => "NONE"
-      | SOME [] => ""
-      | SOME (x::[]) => Int.toString(x)
-      | SOME (x::rest) => Int.toString(x) ^ ", " ^ int_list_option_formatter(SOME rest)
-
-fun string_list_formatter list =
+fun a_list_formatter element_formatter list =
     case list of
-	[] => "EMPTY"
-      | x::[] => x
-      | x::rest => x ^ ", " ^ string_list_formatter (rest)
+	[] => "[]"
+      | elements => "[" ^ (String.concatWith ", " (List.map element_formatter elements)) ^ "]"
+  
+val string_list_formatter = a_list_formatter string_formatter 
+val int_list_formatter = a_list_formatter int_formatter
+					
+fun a_option_formatter value_formatter option =
+    case option of
+	NONE => "NONE"
+      | SOME value => "SOME " ^ value_formatter(value)
 
+val string_list_option_formatter = a_option_formatter string_list_formatter
+val int_list_option_formatter = a_option_formatter int_list_formatter
