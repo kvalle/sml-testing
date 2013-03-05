@@ -2,7 +2,9 @@ SML Testing
 ===========
 
 Simple library for testing SML code. 
-The library basically provide some `assert_*` functions, and some formatters used in these to provide the needed output should an assert fail.
+The library basically provide some `assert` functions, and some `formatters` used in these to provide the needed output should an assert fail.
+
+### Usage
 
 You write your tests like this:
 
@@ -21,9 +23,11 @@ test("doubling a list of ints",
 run();
 ```
 
-Write tests by calling the `test()` function. 
-It must return a call to the an `assert` function. 
-Finally call the run function to run the tests.
+Write tests by calling the `test` function. 
+Tests must return a call to the an `assert` function. 
+Finally call the `run` function to run the tests.
+
+### Output
 
 See the example files for simple example usage.
 This is what it looks like if all the tests pass:
@@ -57,6 +61,8 @@ FAILED: comparison of two string lists
 
 val it = "6 tests total" : string
 ```
+
+Not shown (replaced by `...`) are the type definitions of everything you define in your programs, as well as the test descriptions.
 
 ----
 
