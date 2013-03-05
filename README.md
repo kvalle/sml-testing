@@ -64,6 +64,20 @@ val it = "6 tests total" : string
 
 Not shown (replaced by `...`) are the type definitions of everything you define in your programs, as well as the test descriptions.
 
+### Asserts
+
+The asserts are defined in [asserts.sml](https://github.com/kvalle/sml-testing/blob/master/asserts.sml).
+
+The most interesting one is probably `assert_equals` which takes two values and a formatter function.
+
+There is also an `assert_equals_any` which does not provide any detailed output in case of failure, but also does not require a formatter.
+
+### Formatters
+
+The formatters are defined in [formatters.sml](https://github.com/kvalle/sml-testing/blob/master/formatters.sml). They are basically functions which take in a value of some type, and returns a string representing this value.
+
+You will probably need to extend or write your own formatters for any datatype you create.
+
 ----
 
 A tiny disclaimer: *While the framework should not be dependent on anything complier specific, it is only tested with the SML/NJ distribution.*
