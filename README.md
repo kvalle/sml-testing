@@ -1,8 +1,8 @@
 SML Testing
 ===========
 
-Simple library for testing SML code. 
-The library basically provide some `assert` functions, and some `formatters` used in these to provide the needed output should an assert fail.
+Simple framework for testing SML code. 
+The framework basically provide some `assert` functions, and some `formatters` used in these to provide the needed output should an assert fail.
 
 ### Usage
 
