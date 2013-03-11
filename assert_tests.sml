@@ -49,4 +49,19 @@ test("assert_raises calls fn with provided arguments",
 				 FooExn),
 		   string_formatter));
 
+test("assert_equals_bool with true and true passees",
+     assert_equals(TEST_PASSED,
+		   assert_equals_bool true true,
+		   string_formatter));
+
+test("assert_true with true passes",
+     assert_equals(TEST_PASSED,
+		   assert_true true,
+		   string_formatter));
+
+test("assert_true with false fails",
+     assert_equals("Expected 'true' but got 'false'",
+		   assert_true false,
+		   string_formatter));
+
 run();

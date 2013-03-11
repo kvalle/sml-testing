@@ -9,8 +9,8 @@ fun assert_equals_any (expected, actual) =
     if expected = actual then TEST_PASSED else TEST_FAILED
 			
 fun assert_equals_bool expected actual = assert_equals(expected, actual, Bool.toString)
-fun assert_true (actual) = assert_equals_bool true
-fun assert_false (actual) = assert_equals_bool false
+val assert_true = assert_equals_bool true
+val assert_false = assert_equals_bool false
 					     
 fun assert_raises (f, args, e) =
     (f args; "No " ^ exnName (e) ^ " was raised") 
