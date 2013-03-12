@@ -17,7 +17,7 @@ test("two plus three is five",
 
 test("doubling a list of ints",
      assert_equals_int_list([2, 4, 6],
-			    List.map (fn x => x*2) [1,2,3]));	
+                            List.map (fn x => x*2) [1,2,3]));   
 
 run();
 ```
@@ -67,15 +67,16 @@ Not shown (replaced by `...`) are the type definitions of everything you define 
 
 The asserts are defined in [asserts.sml](https://github.com/kvalle/sml-testing/blob/master/asserts.sml).
 
-The most interesting one is probably `assert_equals` which takes two values and a formatter function.
+You'll find that some basic ones are pre-defined, such as `assert_true` (and `false`), `assert_equals` for a handful of datatypes, and an `assert_raises` that checks that your code raises the expected exception.
 
-There is also an `assert_equals_any` which does not provide any detailed output in case of failure, but also does not require a formatter.
+If (or rather *when*) you need to assert something new (e.g, that a number is prime or that a hand of cards holds a stright flush), use the `mk_assert_*` functions to new ones.
 
 ### Formatters
 
 The formatters are defined in [formatters.sml](https://github.com/kvalle/sml-testing/blob/master/formatters.sml). They are basically functions which take in a value of some type, and returns a string representing this value.
+These enable the asserts to display informative messages when tests fail, such as what the result was and what it had expected.
 
-You will probably need to extend or write your own formatters for any datatype you create.
+You will probably need to extend or write your own formatters for any custom datatypes you create.
 
 ----
 
