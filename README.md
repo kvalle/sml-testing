@@ -69,7 +69,7 @@ The asserts are defined in [asserts.sml](https://github.com/kvalle/sml-testing/b
 
 You'll find that some basic ones are pre-defined, such as `assert_true` (and `false`), `assert_equals` for a handful of datatypes, and an `assert_raises` that checks that your code raises the expected exception.
 
-If (or rather *when*) you need to assert something new (e.g, that a number is prime or that a hand of cards holds a stright flush), use the `mk_assert_*` functions to new ones.
+If (or rather *when*) you need to assert something new (e.g, that a number is prime or that a hand of cards holds a stright flush), use the `mk_assert_*` functions to create new ones.
 
 ### Formatters
 
