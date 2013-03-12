@@ -1,9 +1,12 @@
 val TEST_PASSED = "Test passed"
 val TEST_FAILED = "Test failed"
 
-fun assert_equals (expected, actual, formatter) =
-    if expected = actual then TEST_PASSED
+fun mk_assert pred_fn (expected, actual, formatter) = 
+    if pred_fn(expected, actual) then TEST_PASSED
     else "Expected '" ^ formatter (expected) ^ "' but got '" ^ formatter (actual) ^ "'"
+
+(* Need the unnecessary function wrapping because of the value restriction problem *)
+fun assert_equals args = mk_assert (fn (e,a) => e=a) args
 
 fun assert_equals_any (expected, actual) = 
     if expected = actual then TEST_PASSED else TEST_FAILED
