@@ -1,6 +1,4 @@
 use "asserts.sml";
-use "formatters.sml";
-
 
 signature TESTS =
 sig
