@@ -5,16 +5,14 @@ open SmlTests;
 (* Included to illustrate test output. *)
 
 test("comparison of two string lists",
-     assert_equals(["1","2","foo", "bar"],
-		   ["foo","bar","baz"],
-		   string_list_formatter));
+     assert_equals_string_list(["1","2","foo", "bar"],
+			       ["foo","bar","baz"]));
 
 test("comparison of two bools",
-     assert_equals(false, true, bool_formatter));
+     assert_equals_bool(false, true));
 
 test("comparison of string options",
-     assert_equals(NONE, SOME "I am a string!",
-		   string_option_formatter));
+     assert_equals_string_option(NONE, SOME "I am a string!"));
 
 test("comparison using the equals-method without explicit formatter",
      assert_equals_any("a string", "a completely different string"));
@@ -22,12 +20,11 @@ test("comparison using the equals-method without explicit formatter",
 (* And a couple of tests that won't fail. *)
 
 test("fourty two is fourty two",
-     assert_equals(42, 42, int_formatter));
+     assert_equals_int(42, 42));
 
 test("check appending two int lists",
-     assert_equals([1,2,3],
-		   [1,2]@[3],
-		   int_list_formatter));
+     assert_equals_int_list([1,2,3],
+			    [1,2]@[3]));
 
 run();
 
